@@ -1,17 +1,17 @@
 export default class ObjectValidator {
-    constructor(shape) {
-        this.validators = shape;
-    }
+  constructor(shape) {
+    this.validators = shape;
+  }
 
-    isValid(value) {
-        return Object.entries(value).every(([key, value]) => {
-            const validator = this.validators[key];
-            console.log(validator.isValid(value), 'validator.isValid(value)');
-            return validator.isValid(value);
-        });
-    }
+  isValid(valueProp) {
+    return Object.entries(valueProp).every(([key, value]) => {
+      const validator = this.validators[key];
+      console.log(validator.isValid(value), 'validator.isValid(value)');
+      return validator.isValid(value);
+    });
+  }
 
-    shape(mask) {
-        return new ObjectValidator(mask);
-    }
+  shape(mask) {
+    return new ObjectValidator(mask);
+  }
 }
